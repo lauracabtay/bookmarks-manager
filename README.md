@@ -1,12 +1,12 @@
 # REQUIREMENTS
 
-Show a list of bookmarks
-Add new bookmarks
-Delete bookmarks
-Update bookmarks
-Comment on bookmarks
-Tag bookmarks into categories
-Filter bookmarks by tag
+Show a list of bookmarks </br>
+Add new bookmarks </br>
+Delete bookmarks </br>
+Update bookmarks </br>
+Comment on bookmarks </br>
+Tag bookmarks into categories </br>
+Filter bookmarks by tag </br>
 Users are restricted to manage only their own bookmarks
 
 # USER STORIES
@@ -42,3 +42,7 @@ I'd like to filter my bookmarks by tag
 As a user, </br>
 So that I manage my own bookmarks </br>
 I'd like my access to bookmarks to be restricted
+
+# DOMAIN MODEL
+
+![Domain Model](img/domain-model.png)
