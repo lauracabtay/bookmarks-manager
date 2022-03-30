@@ -1,4 +1,6 @@
-# REQUIREMENTS
+# BOOKMARK MANAGER
+
+## REQUIREMENTS
 
 Show a list of bookmarks </br>
 Add new bookmarks </br>
@@ -9,7 +11,7 @@ Tag bookmarks into categories </br>
 Filter bookmarks by tag </br>
 Users are restricted to manage only their own bookmarks
 
-# USER STORIES
+## USER STORIES
 
 As a user, </br>
 So that I can see my saved bookmarks, </br>
@@ -43,6 +45,6 @@ As a user, </br>
 So that I manage my own bookmarks </br>
 I'd like my access to bookmarks to be restricted
 
-# DOMAIN MODEL
+## DOMAIN MODEL
 
 ![Domain Model](img/domain-model.png)
