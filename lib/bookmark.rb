@@ -20,8 +20,8 @@ class Bookmark
 
         result = connection.exec("SELECT * FROM bookmarks;")
         result.map { |bookmark| 
-        Bookmark.new(id: bookmark['id'], title: bookmark['title'], url: bookmark['url'])
-    }
+        # Returns an object rather than a string (e.g. bookmark['url'])
+        Bookmark.new(id: bookmark['id'], title: bookmark['title'], url: bookmark['url'])}
     end
 
     def self.add(title:, url:)
@@ -31,13 +31,17 @@ class Bookmark
             connection = PG.connect(dbname: 'Bookmarks')
         end
 
-        result = connection.exec("INSERT INTO bookmarks (title, url) VALUES ('#{title}', '#{url}') RETURNING id, url, title;")
+        # RETURNING allows the SQL query to return the bookmark created and removes dependencies on .all
+        result = connection.exec_params(
+            "INSERT INTO bookmarks (url, title) VALUES($1, $2) RETURNING id, title, url;", [title, url])
+      # The first argument is our SQL query template
+      # The second argument is the 'params' referred to in exec_params
+      # $1 refers to the first item in the params array
+      # $2 refers to the second item in the params array
+
+
+        #What are we doing here??? We're creating a new object based on the values used to add the bookmark 
+        # to the DB, but why is it index [0]
         Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
     end
-
 end
-
-
-# You may want to update the Bookmark.all method to return instances of the 
-# Bookmark class instead of strings. 
-# The instance should wrap and expose the attributes id, title and url.
