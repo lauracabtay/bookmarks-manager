@@ -16,7 +16,10 @@ class BookmarkManager < Sinatra::Base
         erb :bookmarks
     end
 
-    
+    post '/bookmarks/new' do
+        @bookmarks_added = Bookmark.add(title: params[:title], url: params[:url])
+        redirect '/bookmarks'
+    end
     
     run! if app_file == $0
 end

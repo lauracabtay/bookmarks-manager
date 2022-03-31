@@ -52,8 +52,8 @@ I'd like my access to bookmarks to be restricted
 ## SETTING UP THE DATABASE
 
 1. Connect to `psql` (you may need to install postgresql first by running `brew install postgres`)
-2. Create the database using the psql command `CREATE DATABASE bookmark_manager`
-3. Connect to the database using the pqsl command `\c bookmark_manager`
+2. Create the database using the psql command `CREATE DATABASE Bookmarks`
+3. Connect to the database using the pqsl command `\c Bookmarks`
 4. Run the query we have saved in the file **01_create_bookmarks_table.sql**
 
 ## SETTING UP THE TEST DATABASE
