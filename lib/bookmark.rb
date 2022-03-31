@@ -33,7 +33,7 @@ class Bookmark
 
         # RETURNING allows the SQL query to return the bookmark created and removes dependencies on .all
         result = connection.exec_params(
-            "INSERT INTO bookmarks (url, title) VALUES($1, $2) RETURNING id, title, url;", [title, url])
+            "INSERT INTO bookmarks (title, url) VALUES($1, $2) RETURNING id, title, url;", [title, url])
       # The first argument is our SQL query template
       # The second argument is the 'params' referred to in exec_params
       # $1 refers to the first item in the params array
@@ -44,4 +44,13 @@ class Bookmark
         # to the DB, but why is it index [0]
         Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
     end
-end
+
+    def self.delete(id:)
+        if ENV['ENVIRONMENT'] == 'test'
+            connection = PG.connect(dbname: 'bookmark_manager_test')
+        else
+            connection = PG.connect(dbname: 'Bookmarks')
+        end
+        connection.exec_params("DELETE FROM bookmarks WHERE id = $1", [id])
+        end
+    end
