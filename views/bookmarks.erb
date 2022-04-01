@@ -1,3 +1,14 @@
+<style>
+form {
+    display: inline;
+}
+
+a {
+    display: inline;
+}
+
+</style>
+
 <h1>Bookmark Manager</h1>
 <br/>
 <h2>My bookmarks</h2>
@@ -9,6 +20,9 @@
         <form action="/bookmarks/<%= bookmark.id %>" method="post">
             <input type='hidden' name='_method' value='DELETE'/>
             <input type="submit" value="Delete" />
+      </form>    
+        <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
+            <input type="submit" value="Edit" />
       </form>    
     </li>
 <% end %>
